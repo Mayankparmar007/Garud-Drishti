@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Control room — UKSI P-007</title>
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="top">
+    <div class="brand">UKSI P-007<span id="scene-name">loading scene…</span></div>
+
+    <div class="metrics">
+      <div class="metric">
+        <span class="k">Feed</span>
+        <span class="v"><span class="dot" id="src-dot"></span><span id="src-text">—</span></span>
+      </div>
+      <div class="metric">
+        <span class="k">Latency</span>
+        <span class="v" id="m-latency">—</span>
+      </div>
+      <div class="metric">
+        <span class="k">Pipeline</span>
+        <span class="v" id="m-proc">—</span>
+      </div>
+      <div class="metric">
+        <span class="k">People</span>
+        <span class="v" id="m-count">—</span>
+      </div>
+      <div class="metric" id="m-err" style="display:none">
+        <span class="k">Count err</span>
+        <span class="v" id="m-err-v">—</span>
+      </div>
+      <div class="metric">
+        <span class="k">Zones</span>
+        <span class="v" id="m-zones">—</span>
+      </div>
+      <div class="metric">
+        <span class="k">Model</span>
+        <span class="v" id="m-model">—</span>
+      </div>
+      <div class="metric">
+        <span class="k">Dashboard</span>
+        <span class="v"><span class="dot" id="ws-dot"></span><span id="ws-text">—</span></span>
+      </div>
+      <div class="metric">
+        <span class="k">Clock</span>
+        <span class="v" id="m-clock">—</span>
+      </div>
+      <div class="metric">
+        <span class="k">Setup</span>
+        <span class="v"><a href="/setup.html">scene →</a></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <div class="stage" id="stage">
+      <canvas id="view" width="960" height="544"></canvas>
+
+      <div class="banner hidden" id="banner"></div>
+
+      <div class="toggles">
+        <label><input type="checkbox" id="t-heat" checked> Heat map</label>
+        <label><input type="checkbox" id="t-vectors" checked> Zones &amp; flow</label>
+        <label><input type="checkbox" id="t-labels" checked> Labels</label>
+      </div>
+
+      <div class="legend" id="legend">
+        <div class="title">Persons / m²</div>
+        <div id="legend-rows"></div>
+        <div class="row" style="margin-top:7px;border-top:1px solid var(--line);padding-top:6px;">
+          <span id="legend-scale">—</span>
+        </div>
+      </div>
+    </div>
+
+    <aside class="rail">
+
+      <section class="section">
+        <h2>Zones <span class="count" id="zones-count">—</span></h2>
+        <div id="zones"></div>
+      </section>
+
+      <section class="section">
+        <h2>Evacuation corridors <span class="count" id="corr-count">—</span></h2>
+        <div class="corridors" id="corridors"></div>
+      </section>
+
+      <section class="section">
+        <h2>Alerts <span class="count" id="alerts-count">—</span></h2>
+        <div id="alerts"></div>
+      </section>
+
+      <details class="audit" id="audit-box">
+        <summary>Access log</summary>
+        <div id="audit"></div>
+      </details>
+
+      <div class="demo" id="demo-box">
+        <div class="hint" id="demo-hint">
+          Loading…
+        </div>
+        <div class="row">
+          <input type="number" id="demo-t" min="0" max="3600" step="5" value="120" aria-label="Scenario time in seconds">
+          <button class="btn" id="demo-jump">Jump</button>
+          <button class="btn" id="demo-reset">Reset</button>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="/common.js"></script>
+<script src="/control.js"></script>
+</body>
+</html>

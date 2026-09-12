@@ -1,0 +1,22 @@
+# Python cache and environments
+__pycache__/
+*.py[cod]
+*.class
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Project-specific runtime data and DBs
+data/runtime/
+*.db
+*.sqlite3
+
+# Large video files and model weights
+data/clips/
+data/weights/*.pth
+data/weights/*.pt
+
+# OS generated files
+.DS_Store
+Thumbs.db

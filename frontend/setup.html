@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Crowd Safety - Scene Setup</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="tag">UKSI P-007</span> Scene setup</div>
+  <div class="spacer"></div>
+  <div class="stats"><span id="mode-hint">Pick a step on the right</span></div>
+  <a class="navlink" href="index.html">&larr; Control room</a>
+</div>
+
+<div class="setup-main">
+  <div class="viewport">
+    <div class="frame-wrap">
+      <img id="frame" alt="">
+      <canvas id="setup-canvas"></canvas>
+      <div class="waiting" id="waiting">loading frame...</div>
+    </div>
+    <div class="strip">
+      <div class="toggle" id="btn-refresh">Refresh frame</div>
+      <div class="toggle" id="btn-undo">Undo last point</div>
+      <div class="toggle" id="btn-cancel">Cancel drawing</div>
+      <span class="stats" style="margin-left:auto"><span id="click-hint">&nbsp;</span></span>
+    </div>
+  </div>
+
+  <div class="setup-side">
+    <div class="setup-body">
+
+      <div class="step">
+        <div class="hd"><span class="n">1</span> Scene and source</div>
+        <div class="bd">
+          <label>Scene name</label>
+          <input type="text" id="scene-name" placeholder="Har Ki Pauri - main ghat">
+          <div class="row">
+            <div>
+              <label>Source</label>
+              <select id="src-kind">
+                <option value="synthetic">synthetic (simulator)</option>
+                <option value="file">file (looped clip)</option>
+                <option value="rtsp">rtsp (live stream)</option>
+              </select>
+            </div>
+            <div>
+              <label>URI / path</label>
+              <input type="text" id="src-uri" placeholder="data/clips/ghat.mp4">
+            </div>
+          </div>
+          <label>Load a preset</label>
+          <select id="presets"><option value="">-</option></select>
+          <div class="btns"><button id="btn-preset">Load preset</button></div>
+        </div>
+      </div>
+
+      <div class="step" id="step-cal">
+        <div class="hd"><span class="n">2</span> Ground calibration</div>
+        <div class="bd">
+          <div class="hint">
+            Click <b>four points on the ground</b> that form a rectangle of known
+            size &mdash; a barrier span, a lane width, anything measurable on a
+            satellite view. Go <b>clockwise from the top-left</b>. Without this,
+            every density figure is a guess.
+          </div>
+          <div class="row">
+            <div><label>Width (m)</label><input type="number" id="cal-w" value="20" step="0.1" min="0.1"></div>
+            <div><label>Depth (m)</label><input type="number" id="cal-h" value="15" step="0.1" min="0.1"></div>
+          </div>
+          <label>Note (what you measured)</label>
+          <input type="text" id="cal-note" placeholder="barrier span, measured on satellite">
+          <div class="btns">
+            <button class="primary" id="btn-cal">Place 4 points</button>
+            <button class="danger" id="btn-cal-clear">Clear</button>
+          </div>
+          <div id="cal-status" class="sub" style="margin-top:8px;color:#8b97a8;font:11px monospace"></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="hd"><span class="n">3</span> Zones</div>
+        <div class="bd">
+          <p>Click around an area, then press <b>Enter</b> or double-click to close it.</p>
+          <div id="zone-list"></div>
+          <div class="btns"><button class="primary" id="btn-zone">Draw a zone</button></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="hd"><span class="n">4</span> Evacuation corridors</div>
+        <div class="bd">
+          <p>Draw the routes you would actually use. Density along them is
+             reported so you know if the way out is itself full.</p>
+          <div id="corridor-list"></div>
+          <div class="btns"><button class="primary" id="btn-corridor">Draw a corridor</button></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="hd"><span class="n">5</span> Count calibration</div>
+        <div class="bd">
+          <p>Hand-count the people in one frame, compare with the reported
+             total, and set the ratio here. Recorded in config, not hidden in
+             the model.</p>
+          <div class="row">
+            <div><label>Count scale</label><input type="number" id="count-scale" value="1.0" step="0.05" min="0.05"></div>
+            <div><label>Reported now</label><input type="text" id="reported-now" readonly></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="btns" style="padding:0 14px 12px">
+      <button class="primary" id="btn-save">Save and apply</button>
+      <button id="btn-reload">Discard changes</button>
+    </div>
+    <div class="status-line" id="save-status">&nbsp;</div>
+  </div>
+</div>
+
+<script src="setup.js"></script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+{
+  "name": "Har Ki Pauri (simulated ghat)",
+  "source": {
+    "kind": "synthetic",
+    "uri": ""
+  },
+  "frame_size": [
+    960,
+    544
+  ],
+  "count_scale": 1.0,
+  "density_backend": "blob",
+  "calibration": {
+    "image_points": [
+      [
+        0,
+        0
+      ],
+      [
+        960,
+        0
+      ],
+      [
+        960,
+        544
+      ],
+      [
+        0,
+        544
+      ]
+    ],
+    "world_points": [
+      [
+        0,
+        0
+      ],
+      [
+        30,
+        0
+      ],
+      [
+        30,
+        17
+      ],
+      [
+        0,
+        17
+      ]
+    ],
+    "note": "Simulated view is orthographic from a hover, so the frame maps to 30 m x 17 m of ground exactly. On real footage these four points are clicked on a feature of known size."
+  },
+  "zones": [
+    {
+      "id": "ghat_west",
+      "name": "West Ghat Steps",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          448,
+          0
+        ],
+        [
+          448,
+          192
+        ],
+        [
+          0,
+          192
+        ]
+      ],
+      "neighbors": [
+        "ghat_east",
+        "west_approach"
+      ],
+      "note": "Upper terrace, west half. Feeds the west gate."
+    },
+    {
+      "id": "ghat_east",
+      "name": "East Ghat Steps",
+      "polygon": [
+        [
+          448,
+          0
+        ],
+        [
+          960,
+          0
+        ],
+        [
+          960,
+          192
+        ],
+        [
+          448,
+          192
+        ]
+      ],
+      "neighbors": [
+        "ghat_west",
+        "gate_approach"
+      ],
+      "note": "Upper terrace, east half. Feeds the main gate."
+    },
+    {
+      "id": "gate_approach",
+      "name": "Main Gate Approach",
+      "polygon": [
+        [
+          496,
+          192
+        ],
+        [
+          848,
+          192
+        ],
+        [
+          848,
+          307
+        ],
+        [
+          496,
+          307
+        ]
+      ],
+      "neighbors": [
+        "ghat_east",
+        "exit_apron",
+        "west_approach"
+      ],
+      "note": "The funnel above the main gap. This is where inflow exceeding outflow shows up first."
+    },
+    {
+      "id": "west_approach",
+      "name": "West Gate Approach",
+      "polygon": [
+        [
+          32,
+          192
+        ],
+        [
+          320,
+          192
+        ],
+        [
+          320,
+          307
+        ],
+        [
+          32,
+          307
+        ]
+      ],
+      "neighbors": [
+        "ghat_west",
+        "exit_apron",
+        "gate_approach"
+      ],
+      "note": "The funnel above the west gap. Stays clear until the corridor is opened."
+    },
+    {
+      "id": "exit_apron",
+      "name": "Exit Apron",
+      "polygon": [
+        [
+          0,
+          320
+        ],
+        [
+          960,
+          320
+        ],
+        [
+          960,
+          544
+        ],
+        [
+          0,
+          544
+        ]
+      ],
+      "neighbors": [
+        "gate_approach",
+        "west_approach"
+      ],
+      "note": "Below the barrier. Carries the downstream flow and the returning upstream flow, so it is the zone convergence is measured against."
+    }
+  ],
+  "corridors": [
+    {
+      "id": "main_gate",
+      "name": "Main gate",
+      "polygon": [
+        [
+          624,
+          272
+        ],
+        [
+          720,
+          272
+        ],
+        [
+          720,
+          352
+        ],
+        [
+          624,
+          352
+        ]
+      ],
+      "width_m": 3.0,
+      "note": "The primary gap through the barrier."
+    },
+    {
+      "id": "west_corridor",
+      "name": "West evacuation corridor",
+      "polygon": [
+        [
+          120,
+          272
+        ],
+        [
+          200,
+          272
+        ],
+        [
+          200,
+          352
+        ],
+        [
+          120,
+          352
+        ]
+      ],
+      "width_m": 2.5,
+      "note": "Held in reserve. Opening this is the action the demo's alert is asking for."
+    }
+  ],
+  "thresholds": {
+    "band_busy": 2.0,
+    "band_crowded": 3.0,
+    "band_very_crowded": 4.0,
+    "band_critical": 5.0,
+    "trend_window_s": 60.0,
+    "trend_rising_rate": 0.12,
+    "ttc_amber_s": 300.0,
+    "ttc_red_s": 120.0,
+    "free_speed_ms": 1.0,
+    "slow_speed_ms": 0.35,
+    "breakdown_density": 2.0,
+    "breakdown_speed_drop": 0.35,
+    "pressure_amber": 0.6,
+    "pressure_red": 1.2,
+    "convergence_amber": 0.45,
+    "convergence_red": 0.7,
+    "corridor_clear": 1.0,
+    "corridor_restricted": 2.0,
+    "dwell_s": 25.0,
+    "resolve_s": 45.0,
+    "reassert_gap_s": 120.0
+  }
+}
