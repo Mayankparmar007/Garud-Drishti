@@ -1,4 +1,4 @@
-# ?? Garud-Drishti (UKSI P-007)
+# Garud-Drishti (UKSI P-007)
 **AI-Powered Crowd Safety & Risk Analytics Platform**
 
 Garud-Drishti is a real-time computer vision system designed to monitor large gatherings from drone or CCTV camera feeds. It acts as an intelligent control room that evaluates crowd dynamics, density, and flow, warning operators **before** a dangerous crush or stampede can develop.
@@ -7,23 +7,23 @@ Originally modeled for dense pilgrimage scenarios (ghats, temples), it is highly
 
 ---
 
-## ? Core Capabilities
+## Core Capabilities
 
-* **?? Smart Density Estimation:** Uses Deep Learning (CSRNet), YOLO object detection, or classical blob tracking to calculate precise crowd density (persons/m²) across custom zones.
-* **?? Optical Flow Analysis:** Tracks dense crowd movement, speed, direction, and flow coherence in real-time, stripping out drone/camera jitter.
-* **?? 5-Signal Risk Engine:** Evaluates independent danger signals simultaneously:
+* **Smart Density Estimation:** Uses Deep Learning (CSRNet), YOLO object detection, or classical blob tracking to calculate precise crowd density (persons/m²) across custom zones.
+* **Optical Flow Analysis:** Tracks dense crowd movement, speed, direction, and flow coherence in real-time, stripping out drone/camera jitter.
+* **5-Signal Risk Engine:** Evaluates independent danger signals simultaneously:
   1. **Density:** Basic overcrowding thresholds.
   2. **Density Trend:** Rate of density change & time-to-critical forecasting.
   3. **Flow Breakdown:** Detects when a crowd is packing in but stalling (the #1 precursor to a crowd crush).
   4. **Pressure:** Measures crowd turbulence (density × velocity variance).
   5. **Convergence:** Detects opposing counter-flows causing dangerous compression.
-* **?? Smart Alert Manager:** Uses hysteresis and dwell timers to prevent alarm fatigue and false positives. Auto-escalates severe risks.
-* **??? Live Dashboard:** Web-based control room UI showing real-time heat maps, flow vectors, active zones, and alerts with evidence snapshots.
-* **?? Privacy by Design:** Analyzes crowds as fluid dynamics. No facial recognition, no individual trajectory tracking, and automatic evidence purging.
+* **Smart Alert Manager:** Uses hysteresis and dwell timers to prevent alarm fatigue and false positives. Auto-escalates severe risks.
+* **Live Dashboard:** Web-based control room UI showing real-time heat maps, flow vectors, active zones, and alerts with evidence snapshots.
+* **Privacy by Design:** Analyzes crowds as fluid dynamics. No facial recognition, no individual trajectory tracking, and automatic evidence purging.
 
 ---
 
-## ?? System Requirements
+## System Requirements
 
 ### Hardware
 * **Minimum (Testing/Demo):** Standard modern CPU (Intel i5/Ryzen 5 or better), 8GB RAM. 
@@ -36,7 +36,7 @@ Originally modeled for dense pilgrimage scenarios (ghats, temples), it is highly
 
 ---
 
-## ??? Getting Started
+## Getting Started
 
 ### 1. Setup Environment
 Clone the repository and set up a Python virtual environment:
@@ -65,7 +65,7 @@ pip install torch torchvision ultralytics
 
 ---
 
-## ?? Usage
+## Usage
 
 Garud-Drishti comes with a built-in "Synthetic Demo" so you can test the dashboard immediately, or you can plug in your own video feeds.
 
@@ -83,12 +83,12 @@ python run.py --source "rtsp://192.168.1.100:554/stream"
 
 ### Access the Interfaces
 Once running, open your web browser:
-* ??? **Live Dashboard:** [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-* ?? **Scene Setup & Calibration:** [http://127.0.0.1:8000/setup.html](http://127.0.0.1:8000/setup.html)
+* **Live Dashboard:** [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+* **Scene Setup & Calibration:** [http://127.0.0.1:8000/setup.html](http://127.0.0.1:8000/setup.html)
 
 ---
 
-## ?? Calibration & Configuration
+## Calibration & Configuration
 
 To use Garud-Drishti on your own footage, you must calibrate the system to understand your camera's perspective. 
 
